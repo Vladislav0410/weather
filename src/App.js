@@ -6,46 +6,45 @@ import Weather from './components/weather';
 class App extends React.Component {
 
   state = {
-    temp: undefined,
-    city: undefined,
-    country: undefined,
-    windspeed: undefined,
-    sunset: undefined,
-    error: undefined
+    temp: "",
+    city: "",
+    country: "",
+    windspeed: "",
+    description: "",
+    humidity: "",
+    error: ""
   }
 
   gettingWeather = async (e) => {
     e.preventDefault();
     let city = e.target.elements.city.value;
     if(city) {
-        const api = await fetch(`HTTPS://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0ceeb6d2cd47c2a59d70272403971e35&units=metric`);
-        const data = await api.json();
-      try{  
-      var sunset = data.sys.sunset;
-      } catch (e) {
-        alert('Введите существующее название города по-русски по-английски ');
-        window.location.reload()
-      }
-      var date = new Date();
-      date.setTime(sunset);
-      var sunset_date = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
-
+      const api = await fetch(`HTTPS://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0ceeb6d2cd47c2a59d70272403971e35&units=metric`);
+      const data = await api.json();  
+      console.log(data)
+      try{
       this.setState({
-        temp: data.main.temp,
+        temp: Math.round(data.main.temp),
         city: data.name,
         country: data.sys.country,
-        windspeed: data.wind.speed,
-        sunset: sunset_date,
-        error: undefined
+        windspeed: Math.round(data.wind.speed),
+        description: data.weather[0].description[0].toUpperCase() + data.weather[0].description.slice(1),
+        humidity: data.main.humidity,
+        error: ""
       });
+    } catch (e) {
+      alert('Enter correct city name')
+      window.location.reload();
+    }
     } else {
       this.setState({
-    temp: undefined,
-    city: undefined,
-    country: undefined,
-    windspeed: undefined,
-    sunset: undefined,
-    error: "Введите название города"
+    temp: "",
+    city: "",
+    country: "",
+    windspeed: "",
+    description: "",
+    humidity: "",
+    error: "Enter city name"
       });
     }
   }
@@ -65,7 +64,8 @@ class App extends React.Component {
                 city={this.state.city}
                 country={this.state.country}
                 windspeed={this.state.windspeed}
-                sunset={this.state.sunset}
+                description={this.state.description}
+                humidity={this.state.humidity}
                 error={this.state.error}
               />
             </div>
