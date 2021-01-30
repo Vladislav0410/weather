@@ -5,7 +5,7 @@ body {
 }
 
 .wrapper {
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -21,15 +21,15 @@ body {
 }
 
 .main {
-  height: 65vh;
+  height: 100%;
   background: #2a6bb1;
   box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .info {
-  height: 65vh;
+  height: 325px;
   background: url("img/polygon.jpg") center center no-repeat;
   background-blend-mode: multiply;
   background-color: #484747;
@@ -44,19 +44,16 @@ body {
 }
 
 .form {
-  height: 65vh;
-  padding-top: 60px;
-  padding-left: 50px;
-  border-top: 2px solid #113a65;
-  border-bottom: 2px solid #113a65;
-  border-right: 2px solid #113a65;
+  height: 100%;
+  padding-top: 20px;
+  padding-left: 0px;
 }
 
 input[type="text"] {
   background-color: transparent;
   border: 0;
   border-bottom: solid 2px #113a65;
-  width: 50%;
+  width: 35%;
   padding-bottom: 4px;
   color: #fff;
   font-weight: lighter;
@@ -100,7 +97,7 @@ button:active {
 }
 
 .info h2 {
-  font-size: 3em;
+  font-size: 4em;
   color: #fff;
 }
 
@@ -110,7 +107,7 @@ button:active {
 }
 
 .infoWeath {
-  width: 60%;
+  width: 40%;
   font-size: 20px;
   color: #fff;
 }
