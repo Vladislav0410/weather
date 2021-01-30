@@ -20,12 +20,8 @@ class App extends React.Component {
 		if (city) {
 			try {
                 const api = await fetch(
-                    `HTTPS://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0ceeb6d2cd47c2a59d70272403971e35&units=metric`
-                );
+                    `HTTPS://api.openweathermap.org/data/2.5/weather?q=${city}&appid=0ceeb6d2cd47c2a59d70272403971e35&units=metric`);
                 const data = await api.json();
-                if(data.cod === "404") {
-                    throw "Enter correct city name";
-                }
                     const {main, sys, weather, wind, name} = data;
                     this.setState({
                         temp: Math.round(main.temp),
@@ -46,7 +42,7 @@ class App extends React.Component {
                     windspeed: "",
                     description: "",
                     humidity: "",
-                    error: e,
+                    error: "Enter correct city name",
                 });
 			}
 		} else {
