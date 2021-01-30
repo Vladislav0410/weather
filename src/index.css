@@ -46,7 +46,7 @@ body {
 .form {
   height: 100%;
   padding-top: 20px;
-  padding-left: 0px;
+  padding-left: 10px;
 }
 
 input[type="text"] {
